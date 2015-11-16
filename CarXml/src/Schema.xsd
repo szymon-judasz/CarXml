@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Schema" xmlns:tns="http://www.example.org/Schema" elementFormDefault="qualified">
+
+
+    <complexType name="PersonType">
+    	<sequence>
+    		<element name="FirstName" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="LastName" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="Pesel" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="Email" type="string"></element>
+    		<element name="OwnedVehicle" type="tns:OwnedVehicleType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+
+
+
+    <complexType name="OwnedVehicleType">
+    	<complexContent>
+    		<extension base="tns:VehicleType">
+
+    			<sequence>
+    				<element name="FurtherInformation" type="string"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    
+
+
+    <complexType name="VehicleType">
+    	<sequence>
+    		<element name="Vin" type="string"></element>
+    		<element name="Model" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="DataListType">
+    	<sequence>
+    		<element name="People" type="tns:PersonType" maxOccurs="unbounded" minOccurs="0"></element>
+
+    		<element name="DestroyedVehicles" type="tns:VehicleType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <element name="Data" type="tns:DataListType"></element>
+</schema>
