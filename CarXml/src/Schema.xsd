@@ -28,8 +28,15 @@
     		<extension base="tns:VehicleType">
 
     			<sequence>
-    				<element name="FurtherInformation" type="string"></element>
-    			</sequence>
+    				<element name="DateOfFirstRegisration"
+    					type="string" maxOccurs="1" minOccurs="1">
+    				</element>
+    				<element name="DocumentID" type="string" maxOccurs="1" minOccurs="1"></element>
+    				<element name="DocumentExpiratonDate"
+    					type="string" maxOccurs="1" minOccurs="1">
+    				</element>
+                    <element name="VehicleRegistrationNumber" type="string" maxOccurs="1" minOccurs="1"></element>
+                </sequence>
     		</extension>
     	</complexContent>
     </complexType>
