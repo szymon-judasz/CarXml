@@ -9,3 +9,4 @@
 *.ear
 .metadata/
 build*/
+.recommenders/
