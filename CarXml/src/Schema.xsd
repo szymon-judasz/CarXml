@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Schema" xmlns:tns="http://www.example.org/Schema" elementFormDefault="qualified">
+<xsd:schema targetNamespace="http://www.example.org/Schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org/Schema">
 
 
-    <complexType name="PersonType">
-    	<sequence>
-    		<element name="FirstName" type="string" maxOccurs="1"
-    			minOccurs="1">
-    		</element>
-    		<element name="LastName" type="string" maxOccurs="1"
-    			minOccurs="1">
-    		</element>
-    		<element name="Pesel" type="string" maxOccurs="1"
-    			minOccurs="1">
-    		</element>
-    		<element name="Email" type="string"></element>
-    		<element name="OwnedVehicle" type="tns:OwnedVehicleType"
-    			maxOccurs="unbounded" minOccurs="0">
-    		</element>
-    	</sequence>
-    </complexType>
+    <xsd:complexType name="PersonType">
+    	<xsd:sequence>
+    		<xsd:element name="FirstName" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="LastName" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="Pesel" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="Email" type="xsd:string"></xsd:element>
+    		<xsd:element name="OwnedVehicle" type="OwnedVehicleType" maxOccurs="unbounded" minOccurs="0">
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
 
 
 
 
-    <complexType name="OwnedVehicleType">
-    	<complexContent>
-    		<extension base="tns:VehicleType">
+    <xsd:complexType name="OwnedVehicleType">
+    	<xsd:complexContent>
+    		<xsd:extension base="VehicleType">
 
-    			<sequence>
-    				<element name="DateOfFirstRegisration"
-    					type="string" maxOccurs="1" minOccurs="1">
-    				</element>
-    				<element name="DocumentID" type="string" maxOccurs="1" minOccurs="1"></element>
-    				<element name="DocumentExpiratonDate"
-    					type="string" maxOccurs="1" minOccurs="1">
-    				</element>
-                    <element name="VehicleRegistrationNumber" type="string" maxOccurs="1" minOccurs="1"></element>
-                </sequence>
-    		</extension>
-    	</complexContent>
-    </complexType>
+    			<xsd:sequence>
+    				<xsd:element name="DateOfFirstRegisration" type="xsd:string" maxOccurs="1" minOccurs="1">
+    				</xsd:element>
+    				<xsd:element name="DocumentID" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    				<xsd:element name="DocumentExpiratonDate" type="xsd:string" maxOccurs="1" minOccurs="1">
+    				</xsd:element>
+                    <xsd:element name="VehicleRegistrationNumber" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+    		</xsd:extension>
+    	</xsd:complexContent>
+    </xsd:complexType>
     
     
 
 
-    <complexType name="VehicleType">
-    	<sequence>
-    		<element name="Vin" type="string"></element>
-    		<element name="Model" type="string"></element>
-    	</sequence>
-    </complexType>
+    <xsd:complexType name="VehicleType">
+    	<xsd:sequence>
+    		<xsd:element name="Vin" type="xsd:string"></xsd:element>
+    		<xsd:element name="Model" type="xsd:string"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
 
-    <complexType name="DataListType">
-    	<sequence>
-    		<element name="People" type="tns:PersonType" maxOccurs="unbounded" minOccurs="0"></element>
 
-    		<element name="DestroyedVehicles" type="tns:VehicleType"
-    			maxOccurs="unbounded" minOccurs="0">
-    		</element>
-    	</sequence>
-    </complexType>
 
-    <element name="Data" type="tns:DataListType"></element>
-</schema>
+    <xsd:element name="DataListType">
+        <xsd:complexType>
+    	<xsd:sequence>
+    		<xsd:element name="People" type="PersonType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+
+    		<xsd:element name="DestroyedVehicles" type="VehicleType" maxOccurs="unbounded" minOccurs="0">
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+    
+    </xsd:element>
+</xsd:schema>
