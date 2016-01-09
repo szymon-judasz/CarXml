@@ -4,9 +4,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -54,6 +56,16 @@ public class DataManager {
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 		document = documentBuilder.parse(stream);
 		return document;
+	}
+	
+	public void saveDataToXml(DataListType dlt, String filename) throws JAXBException, IOException
+	{
+		InputStream istream = marshall(dlt);
+		Files.copy(istream, new File(filename).toPath());
+	}
+	public DataListType loadDataFromXml(String filename) throws FileNotFoundException, JAXBException
+	{
+		return unmarshall(new FileInputStream(filename));
 	}
 		
 }
